@@ -14,55 +14,52 @@ local config = wezterm.config_builder()
 -- Detect if Windows
 local path_separator = package.config:sub(1, 1)
 if path_separator == "\\" then
-    print("On Windows 🪟")
-    config.default_prog = { 'powershell.exe', '-NoLogo' }
+	print("On Windows 🪟")
+	config.default_prog = { "pwsh.exe", "-NoLogo" }
 
-    table.insert(launch_menu, {
-        label = 'PowerShell',
-        args = { 'powershell.exe', '-NoLogo' },
-      })
-      table.insert(launch_menu, {
-          label = 'WSL',
-          args = { 'wsl.exe' },
-      })
-      table.insert(launch_menu, {
-        label = 'CMD',
-        args = { 'cmd.exe' },
-    })
+	table.insert(launch_menu, {
+		label = "PowerShell",
+		args = { "pwsh.exe", "-NoLogo" },
+	})
+	table.insert(launch_menu, {
+		label = "WSL",
+		args = { "wsl.exe" },
+	})
+	table.insert(launch_menu, {
+		label = "CMD",
+		args = { "cmd.exe" },
+	})
 
-    mouse_bindings = {
-        {
-          event = { Down = { streak = 3, button = 'Left' } },
-          action = wezterm.action.SelectTextAtMouseCursor 'SemanticZone',
-          mods = 'NONE',
-        },
-      }
+	mouse_bindings = {
+		{
+			event = { Down = { streak = 3, button = "Left" } },
+			action = wezterm.action.SelectTextAtMouseCursor("SemanticZone"),
+			mods = "NONE",
+		},
+	}
 else
-    -- Use default shell.  Should be ZSH on MacOS or Linux
-    print("Running on a Unix-like system (macOS or Linux)")
-    table.insert(launch_menu, {
-        label = 'Pwsh',
-        args = { '/usr/local/bin/pwsh', '-NoLogo' },
-      })
+	-- Use default shell.  Should be ZSH on MacOS or Linux
+	print("Running on a Unix-like system (macOS or Linux)")
+	table.insert(launch_menu, {
+		label = "Pwsh",
+		args = { "/usr/local/bin/pwsh", "-NoLogo" },
+	})
 end
 
-wezterm.on('leader-key', function(leader_opts)
-  -- optional leader key logic
+wezterm.on("leader-key", function(leader_opts)
+	-- optional leader key logic
 end)
 
-
 keys = {
-  { key = 'q', mods = 'ALT', action = wezterm.action.CloseCurrentTab { confirm = false } },
-  { key = 't', mods = 'ALT', action = wezterm.action.SpawnTab 'CurrentPaneDomain' },
+	{ key = "q", mods = "ALT", action = wezterm.action.CloseCurrentTab({ confirm = false }) },
+	{ key = "t", mods = "ALT", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
 
-x
+	x,
 }
-
 
 -- Set the default window size (e.g., 80 columns wide and 24 rows high)
 config.initial_cols = 80
 config.initial_rows = 24
-
 
 -- This is where you actually apply your config choices
 config.colors = {
@@ -80,12 +77,12 @@ config.colors = {
 --config.color_scheme = 'AdventureTime'
 
 --config.font = wezterm.font("MesloLGS Nerd Font Mono")
-config.font = wezterm.font('Hack Nerd Font')
+config.font = wezterm.font("Hack Nerd Font")
 config.font_size = 12
 
 config.enable_tab_bar = true
 config.launch_menu = launch_menu
-config.default_cursor_style = 'BlinkingBlock'
+config.default_cursor_style = "BlinkingBlock"
 
 config.window_decorations = "RESIZE"
 -- config.window_background_opacity = 0.8
@@ -96,3 +93,4 @@ config.mouse_bindings = mouse_bindings
 
 -- Finally, return the configuration to wezterm and set default shell.
 return config
+
