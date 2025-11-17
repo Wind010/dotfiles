@@ -1,5 +1,5 @@
 return {
-  "folke/snacks.nvim",
+  'folke/snacks.nvim',
   priority = 1000,
   lazy = false,
   ---@type snacks.Config
@@ -20,4 +20,14 @@ return {
     statuscolumn = { enabled = true },
     words = { enabled = true },
   },
+  keys = {
+    {
+      '<leader>e',
+      function()
+        require('snacks.picker').explorer()
+      end,
+      desc = 'File Explorer',
+    },
+  },
 }
+

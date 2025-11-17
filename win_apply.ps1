@@ -5,10 +5,9 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-
 $LinkMap = @{
-    "~\.wezterm.lua" = ".wezterm.lua";
-    "~\AppData\Local\nvim" = "nvim"
+    "$HOME\.wezterm.lua" = ".wezterm.lua";
+    "$HOME\AppData\Local\nvim" = "nvim"
 }
 
 foreach ($entry in $LinkMap.GetEnumerator()) {
@@ -20,16 +19,15 @@ foreach ($entry in $LinkMap.GetEnumerator()) {
         Remove-Item -Path $LinkPath -Force
     }
 
-    Write-Host "🔗 Creating symlink for $TargetPath to $LinkPath" -ForegroundColor Cyan
+    Write-Host "Creating symlink for $TargetPath to $LinkPath" -ForegroundColor Cyan
 
     try {
-        New-Item -ItemType SymbolicLink -Path $LinkPath -Value $TargetPath
+        New-Item -ItemType SymbolicLink -Path $LinkPath -Target $TargetPath
     }
     catch {
         Write-Host "Error creating symbolic link: $($_.Exception.Message)"
         exit 1
     }
-}
+} 
 
-
-Write-Host "✅ Successfully applied dotfiles!" -ForegroundColor Green
+Write-Host "Successfully applied dotfiles!" -ForegroundColor Green
