@@ -54,7 +54,11 @@ keys = {
 	{ key = "q", mods = "ALT", action = wezterm.action.CloseCurrentTab({ confirm = false }) },
 	{ key = "t", mods = "ALT", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
 
-	x,
+	{ key = 'h', mods = 'ALT', action = act.ActivateTabRelative(-1) },
+	{ key = 'l', mods = 'ALT', action = act.ActivateTabRelative(1) },
+	{ key = '[', mods = 'CTRL|ALT', action = act.ActivateTabRelative(-1) },
+	{ key = ']', mods = 'CTRL|ALT', action = act.ActivateTabRelative(1) },
+	
 }
 
 -- Set the default window size (e.g., 80 columns wide and 24 rows high)
