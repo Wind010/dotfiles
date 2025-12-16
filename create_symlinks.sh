@@ -7,6 +7,9 @@ GIT_REPO_FOR_DOTFILES="${1:-$(pwd)}"
 declare -A LINK_MAP
 LINK_MAP["$HOME/.wezterm.lua"]=".wezterm.lua"
 LINK_MAP["$HOME/.config/nvim"]="nvim"
+LINK_MAP["$HOME/.config/zsh/.zshrc"]=".zshrc"
+LINK_MAP["$HOME/.config/tmux/tmux.conf"]="tmux.conf"
+
 
 for LINK_PATH in "${!LINK_MAP[@]}"; do
     TARGET_PATH="$GIT_REPO_FOR_DOTFILES/${LINK_MAP[$LINK_PATH]}"
