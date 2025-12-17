@@ -29,3 +29,29 @@ for LINK_PATH in "${!LINK_MAP[@]}"; do
 done
 
 echo "✅ Successfully applied dotfiles!"
+
+
+echo "Refresh Oh-My-Zsh plugins"
+
+# Define plugin repositories and their target directories
+declare -A plugins=(
+    ["zsh-autosuggestions"]="https://github.com/zsh-users/zsh-autosuggestions"
+    ["zsh-syntax-highlighting"]="https://github.com/zsh-users/zsh-syntax-highlighting"
+)
+
+ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
+
+for plugin in "${!plugins[@]}"; do
+    plugin_dir="$ZSH_CUSTOM/plugins/$plugin"
+    repo_url="${plugins[$plugin]}"
+
+    if [ -d "$plugin_dir" ]; then
+        echo "Updating $plugin..."
+        git -C "$plugin_dir" pull
+    else
+        echo "Cloning $plugin..."
+        git clone "$repo_url" "$plugin_dir"
+    fi
+done
+
+echo "✅ Successfully refreshed Oh-My-Zsh plugins!"
