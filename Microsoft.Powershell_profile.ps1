@@ -1,5 +1,6 @@
 # OH-MY-POSH stuff here.
 # winget install JanDeDobbeleer.OhMyPosh --source winget
+oh-my-posh init pwsh --config 'powerlevel10k_rainbow' | Invoke-Expression
 
 #Install-Module posh-git -Scope CurrentUser -Force
 Import-Module posh-git
