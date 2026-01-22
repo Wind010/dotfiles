@@ -3,13 +3,16 @@ local wezterm = require("wezterm")
 
 local mux = wezterm.mux
 local act = wezterm.action
-local config = {}
+local config = wezterm.config_builder()  -- This will hold the configuration.
 local keys = {}
 local mouse_bindings = {}
 local launch_menu = {}
 
--- This will hold the configuration.
-local config = wezterm.config_builder()
+-- Plugins
+local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
+
+
+config.default_cwd = "C:/git"
 
 -- Detect if Windows
 local path_separator = package.config:sub(1, 1)
@@ -59,10 +62,37 @@ keys = {
 	{ key = '[', mods = 'CTRL|ALT', action = act.ActivateTabRelative(-1) },
 	{ key = ']', mods = 'CTRL|ALT', action = act.ActivateTabRelative(1) },
 	
+	-- wezterm.resurrect
+	{
+    key = "w",
+    mods = "ALT",
+    action = wezterm.action_callback(function(win, pane)
+        resurrect.state_manager.save_state(resurrect.workspace_state.get_workspace_state())
+      end),
+  },
+  {
+    key = "W",
+    mods = "ALT",
+    action = resurrect.window_state.save_window_action(),
+  },
+  {
+    key = "T",
+    mods = "ALT",
+    action = resurrect.tab_state.save_tab_action(),
+  },
+  {
+    key = "s",
+    mods = "ALT",
+    action = wezterm.action_callback(function(win, pane)
+        resurrect.state_manager.save_state(resurrect.workspace_state.get_workspace_state())
+        resurrect.window_state.save_window_action()
+      end),
+  },
+	
 }
 
 -- Set the default window size (e.g., 80 columns wide and 24 rows high)
-config.initial_cols = 80
+config.initial_cols = 85
 config.initial_rows = 24
 
 -- This is where you actually apply your config choices
@@ -89,8 +119,9 @@ config.launch_menu = launch_menu
 config.default_cursor_style = "BlinkingBlock"
 
 config.window_decorations = "RESIZE"
--- config.window_background_opacity = 0.8
--- config.macos_window_background_blur = 10
+config.window_background_opacity = 0.5
+--config.win32_system_backdrop = 'Acrylic' -- Windows only
+--config.macos_window_background_blur = 20 -- macOS only
 
 config.keys = keys
 config.mouse_bindings = mouse_bindings
