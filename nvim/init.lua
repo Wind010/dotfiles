@@ -98,6 +98,13 @@ vim.api.nvim_set_keymap('i', 'ii', '<Esc>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('c', 'ii', '<Esc>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', 'ii', '<Esc>', { noremap = true, silent = true })
 
+vim.keymap.set('n', '<leader>a', 'ggVG', { desc = 'Select all text' })
+vim.keymap.set('n', '<leader>ya', ':%y+<CR>', { desc = 'Yank all to clipboard' })
+
+-- Remap Y in Visual mode to yank to the system clipboard
+vim.keymap.set('v', 'Y', '"+y')
+
+
 -- For command-line mode, use <C-c> instead of <Esc>
 vim.api.nvim_set_keymap('c', 'ii', '<C-c>', { noremap = true, silent = true })
 

@@ -9,3 +9,5 @@ On Linux and MacOS use `create_symlinks.sh` to create symlinks.
 
 These just need to be applied one time unless a new file is added in which all relevant scripts should be updated.
 
+
+See the expected installed [tools/packages](tools.md)

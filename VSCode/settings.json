@@ -1,0 +1,45 @@
+// %APPDATA%/Roaming/Code/User/settings.json
+{
+  "remote.autoForwardPortsSource": "hybrid""[yaml]": {
+    "editor.autoIndent": "advanced"
+  },
+  "[dockercompose]": {
+    "editor.autoIndent": "advanced"
+  },
+  "terminal.integrated.env.windows": {
+    "PYTHONPATH": "${workspaceFolder}"
+  },
+  "python.terminal.activateEnvironment": false,
+  "php.debug.executablePath": "C:\\Program Files\\php-8.4.11",
+
+  // Vim extension settings
+  "vim.useSystemClipboard": true,
+  "vim.insertModeKeyBindings": [
+    {
+        "before": ["i", "i"],
+        "after": ["<Esc>"]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+        "before": ["Y"],
+        "after": ["\"", "+", "y"]
+    },
+    // Keep the search and replace functionality of Ctrl-h
+    {
+        "before": ["<C-h>"],
+        "commands": ["editor.action.startFindReplaceAction"]
+    }    
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+        "before": ["<leader>", "a"],
+        "after": ["g", "g", "V", "G"]
+    },
+    // Keep the search and replace functionality of Ctrl-h
+    {
+        "before": ["<C-h>"],
+        "commands": ["editor.action.startFindReplaceAction"]
+    }
+  ]
+}
