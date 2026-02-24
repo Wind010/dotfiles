@@ -15,14 +15,27 @@
 
   // Vim extension settings
   "vim.useSystemClipboard": true,
+  "vim.handleKeys": {
+    "<C-c>": false,
+    "<C-x>": false,
+    "<C-v>": false
+  },
   "vim.insertModeKeyBindings": [
     {
         "before": ["i", "i"],
         "after": ["<Esc>"]
     },
     {
+        "before": ["<C-c>"],
+        "commands": ["editor.action.clipboardCopyAction"]
+    },
+    {
         "before": ["<C-v>"],
         "commands": ["editor.action.clipboardPasteAction"]
+    },
+    {
+        "before": ["<C-x>"],
+        "commands": ["editor.action.clipboardCutAction"]
     },
     {
         "before": ["<C-a>"],
@@ -42,6 +55,10 @@
     {
         "before": ["<C-c>"],
         "commands": ["editor.action.clipboardCopyAction"]
+    },
+    {
+        "before": ["<C-x>"],
+        "commands": ["editor.action.clipboardCutAction"]
     },
     {
         "before": ["<C-v>"],
