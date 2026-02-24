@@ -1,6 +1,7 @@
 // %APPDATA%/Roaming/Code/User/settings.json
 {
-  "remote.autoForwardPortsSource": "hybrid""[yaml]": {
+  "remote.autoForwardPortsSource": "hybrid",
+  "[yaml]": {
     "editor.autoIndent": "advanced"
   },
   "[dockercompose]": {
@@ -18,6 +19,14 @@
     {
         "before": ["i", "i"],
         "after": ["<Esc>"]
+    },
+    {
+        "before": ["<C-v>"],
+        "commands": ["editor.action.clipboardPasteAction"]
+    },
+    {
+        "before": ["<C-a>"],
+        "commands": ["editor.action.selectAll"]
     }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
@@ -29,7 +38,19 @@
     {
         "before": ["<C-h>"],
         "commands": ["editor.action.startFindReplaceAction"]
-    }    
+    },
+    {
+        "before": ["<C-c>"],
+        "commands": ["editor.action.clipboardCopyAction"]
+    },
+    {
+        "before": ["<C-v>"],
+        "commands": ["editor.action.clipboardPasteAction"]
+    },
+    {
+        "before": ["<C-a>"],
+        "commands": ["editor.action.selectAll"]
+    }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
@@ -40,6 +61,14 @@
     {
         "before": ["<C-h>"],
         "commands": ["editor.action.startFindReplaceAction"]
+    },
+    {
+        "before": ["<C-v>"],
+        "commands": ["editor.action.clipboardPasteAction"]
+    },
+    {
+        "before": ["<C-a>"],
+        "commands": ["editor.action.selectAll"]
     }
-  ]
+  ],
 }
