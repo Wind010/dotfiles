@@ -21,6 +21,8 @@ case "$(uname)" in
     Darwin)
         LINK_PATHS+=("$HOME/Library/Application Support/Code/User/settings.json")
         TARGET_PATHS+=("VSCode/settings.json")
+        LINK_PATHS+=("$HOME/.config/aerospace/aerospace.toml")
+        TARGET_PATHS+=("aerospace.toml")
         ;;
     Linux)
         LINK_PATHS+=("$HOME/.config/Code/User/settings.json")
@@ -56,16 +58,21 @@ echo "✅ Successfully applied dotfiles!"
 echo "Refresh Oh-My-Zsh plugins"
 
 # Define plugin repositories and their target directories
-declare -A plugins=(
-    ["zsh-autosuggestions"]="https://github.com/zsh-users/zsh-autosuggestions"
-    ["zsh-syntax-highlighting"]="https://github.com/zsh-users/zsh-syntax-highlighting"
+declare -a PLUGIN_NAMES=(
+    "zsh-autosuggestions"
+    "zsh-syntax-highlighting"
+)
+declare -a PLUGIN_URLS=(
+    "https://github.com/zsh-users/zsh-autosuggestions"
+    "https://github.com/zsh-users/zsh-syntax-highlighting"
 )
 
 ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
 
-for plugin in "${!plugins[@]}"; do
+for i in "${!PLUGIN_NAMES[@]}"; do
+    plugin="${PLUGIN_NAMES[$i]}"
+    repo_url="${PLUGIN_URLS[$i]}"
     plugin_dir="$ZSH_CUSTOM/plugins/$plugin"
-    repo_url="${plugins[$plugin]}"
 
     if [ -d "$plugin_dir" ]; then
         echo "Updating $plugin..."

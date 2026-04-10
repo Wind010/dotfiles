@@ -93,8 +93,12 @@ automatically-unhide-macos-hidden-apps = false
     # '''
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-monitor
+    # Move the focused window to the monitor in that direction
     alt-shift-left = 'move-node-to-monitor left'
     alt-shift-right = 'move-node-to-monitor right'
+    alt-shift-up = 'move-node-to-monitor up'
+    alt-shift-down = 'move-node-to-monitor down'
+
 
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
@@ -215,7 +219,7 @@ automatically-unhide-macos-hidden-apps = false
 
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
-run = 'move-node-to-workspace O'
+run = 'move-node-to-workspace N'
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
@@ -226,12 +230,24 @@ if.app-id = 'com.hnc.Discord'
 run = 'move-node-to-workspace D'
 
 [[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace D'
+
+[[on-window-detected]]
 if.app-id = 'dev.warp.Warp-Stable'
 run = 'move-node-to-workspace T'
 
+[[on-window-detected]]
+if.app-id = 'com.utmapp.UTM'
+run = 'move-node-to-workspace V'
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.rdc.macos'
+run = 'move-node-to-workspace V'
 
 
-[workspace-to-monitor-force-assignment]
+
+[workspace-to-monitor-force-assignment
     #B = 'main'
     #T = 'main'
     #C = 'secondary'
