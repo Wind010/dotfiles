@@ -1,0 +1,46 @@
+general.import = [ "~/.config/omarchy/current/theme/alacritty.toml" ]
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+#normal = { family = "CaskaydiaMono Nerd Font", style = "Regular" }
+#bold = { family = "CaskaydiaMono Nerd Font", style = "Bold" }
+#italic = { family = "CaskaydiaMono Nerd Font", style = "Italic" }
+
+normal = { family = "DejaVu Sans Mono", style= "Regular"}
+bold = { family = "DejaVu Sans Mono", style= "Bold"}
+italic = { family = "DejaVu Sans Mono", style= "Italic"}
+
+size = 18.0
+
+# Custom Colors
+[colors.primary]
+background = "#1c1c1c" # Dark grey/black
+foreground = "#51e041" # White text
+
+[colors.normal]
+black = "#000000"
+red = "#ff5555"
+green = "#51e041"   # ParrotOS signature green
+yellow = "#f1fa8c"
+blue = "#bd93f9"
+magenta = "#ff79c6"
+cyan = "#8be9fd"
+white = "#bbbbbb"
+
+[window]
+padding.x = 14
+padding.y = 14
+decorations = "None"
+
+[keyboard]
+bindings = [
+{ key = "F11", action = "ToggleFullscreen" },
+{ key = "Insert", mods = "Shift", action = "Paste" },
+{ key = "Insert", mods = "Control", action = "Copy" },
+  { key = "Return", mods = "Shift", chars = "\u001B\r" }
+]
+
+[terminal]
+osc52 = "CopyPaste"
