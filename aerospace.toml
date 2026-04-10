@@ -92,6 +92,11 @@ automatically-unhide-macos-hidden-apps = false
     # end tell'
     # '''
 
+    # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-monitor
+    alt-shift-left = 'move-node-to-monitor left'
+    alt-shift-right = 'move-node-to-monitor right'
+
+
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
     alt-slash = 'layout tiles horizontal vertical'
     alt-comma = 'layout accordion horizontal vertical'
@@ -179,7 +184,6 @@ automatically-unhide-macos-hidden-apps = false
     alt-shift-z = 'move-node-to-workspace Z'
 
     alt-shift-f = 'fullscreen'
-
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
     alt-tab = 'workspace-back-and-forth'
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
@@ -224,3 +228,11 @@ run = 'move-node-to-workspace D'
 [[on-window-detected]]
 if.app-id = 'dev.warp.Warp-Stable'
 run = 'move-node-to-workspace T'
+
+
+
+[workspace-to-monitor-force-assignment]
+    #B = 'main'
+    #T = 'main'
+    #C = 'secondary'
+    #D = 'main'

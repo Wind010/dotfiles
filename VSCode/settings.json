@@ -1,4 +1,6 @@
 // %APPDATA%/Roaming/Code/User/settings.json
+// ~/Library/Application Support/Code/User/settings.json
+// ~/.config/Code/User/settings.json
 {
   "remote.autoForwardPortsSource": "hybrid",
   "[yaml]": {

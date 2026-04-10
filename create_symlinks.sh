@@ -4,14 +4,36 @@ set -e
 # Default dotfiles repo location is current directory, or use first argument
 GIT_REPO_FOR_DOTFILES="${1:-$(pwd)}"
 
-declare -A LINK_MAP
-LINK_MAP["$HOME/.wezterm.lua"]=".wezterm.lua"
-LINK_MAP["$HOME/.config/nvim"]="nvim"
-LINK_MAP["$HOME/.zshrc"]=".zshrc"
-LINK_MAP["$HOME/.config/tmux/tmux.conf"]="tmux.conf"
+LINK_PATHS=(
+    "$HOME/.wezterm.lua"
+    "$HOME/.config/nvim"
+    "$HOME/.zshrc"
+    "$HOME/.config/tmux/tmux.conf"
+)
+TARGET_PATHS=(
+    ".wezterm.lua"
+    "nvim"
+    ".zshrc"
+    "tmux.conf"
+)
 
-for LINK_PATH in "${!LINK_MAP[@]}"; do
-    TARGET_PATH="$GIT_REPO_FOR_DOTFILES/${LINK_MAP[$LINK_PATH]}"
+case "$(uname)" in
+    Darwin)
+        LINK_PATHS+=("$HOME/Library/Application Support/Code/User/settings.json")
+        TARGET_PATHS+=("VSCode/settings.json")
+        ;;
+    Linux)
+        LINK_PATHS+=("$HOME/.config/Code/User/settings.json")
+        TARGET_PATHS+=("VSCode/settings.json")
+        ;;
+    *)
+        echo "⚠️ Unsupported OS: $(uname). Skipping VS Code settings symlink."
+        ;;
+esac
+
+for i in "${!LINK_PATHS[@]}"; do
+    LINK_PATH="${LINK_PATHS[$i]}"
+    TARGET_PATH="$GIT_REPO_FOR_DOTFILES/${TARGET_PATHS[$i]}"
     PARENT_DIR=$(dirname "$LINK_PATH")
 
     # Ensure the parent directory exists
