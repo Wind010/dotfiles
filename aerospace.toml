@@ -241,13 +241,12 @@ run = 'move-node-to-workspace T'
 if.app-id = 'com.utmapp.UTM'
 run = 'move-node-to-workspace V'
 
-[[on-window-detected]]
+[[on-window-detected]]                                                                                                          
 if.app-id = 'com.microsoft.rdc.macos'
 run = 'move-node-to-workspace V'
 
 
-
-[workspace-to-monitor-force-assignment
+[workspace-to-monitor-force-assignment]
     #B = 'main'
     #T = 'main'
     #C = 'secondary'
