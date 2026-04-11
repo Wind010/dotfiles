@@ -10,10 +10,21 @@ LINK_PATHS=(
     "$HOME/.zshrc"
     "$HOME/.config/tmux/tmux.conf"
 )
+
+# Determine zshrc target based on OS
+case "$(uname)" in
+    Darwin)
+        zshrc_target=".zshrc.macos"
+        ;;
+    *)
+        zshrc_target=".zshrc"
+        ;;
+esac
+
 TARGET_PATHS=(
     ".wezterm.lua"
     "nvim"
-    ".zshrc"
+    "$zshrc_target"
     "tmux.conf"
 )
 
