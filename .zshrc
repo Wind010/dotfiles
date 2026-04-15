@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -75,6 +82,7 @@ ZSH_THEME="agnoster"
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
+source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # User configuration
 
@@ -95,9 +103,10 @@ source $ZSH/oh-my-zsh.sh
 
 
 # History in cache directory
+setopt share_history
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.cache/zsh/history
+HISTFILE=~/.zsh_history
 
 # Basic auto/tab complete:
 # https://thevaluable.dev/zsh-completion-guide-examples/
@@ -152,7 +161,7 @@ alias vim='nvim'
 alias python='python3'
 alias activate='source .venv/bin/activate'
 alias createvenv='python -m venv .venv'
-
+alias ls='eza'
 
 export PATH="$HOME/go/bin:$PATH"
 eval $(keychain --eval github/id_ed25519)
@@ -206,3 +215,9 @@ _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 
+
+# Created by `pipx` on 2026-04-12 03:58:45
+export PATH="$PATH:/home/wind/.local/bin"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
