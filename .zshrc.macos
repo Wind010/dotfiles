@@ -155,6 +155,7 @@ alias vim='nvim'
 alias python='python3'
 alias activate='source .venv/bin/activate'
 alias createvenv='python -m venv .venv'
+alias eza='ls' 
 
 export PATH="$HOME/go/bin:$PATH"
 
