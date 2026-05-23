@@ -166,9 +166,16 @@ alias ls='eza'
 SUDO_EDITOR=nvim
 
 export PATH="$HOME/go/bin:/home/wind/.cargo/bin:$PATH"
-eval $(keychain --eval github/id_ed25519)
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    # Configuration for Linux
+    eval "$(ssh-agent -s)" > /dev/null
+    ssh-add ~/.ssh/github/id_ed25519
+else
+    # Configuration for macOS (and other OS types)
+    eval $(keychain --eval github/id_ed25519)
+fi
 
-# FD
+
 # sudo apt install fd-find
 # sudo pacman -S fd
 export FZF_DEFAULT_COMMAND='fd --type f'

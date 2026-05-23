@@ -1,7 +1,7 @@
 // %APPDATA%/Roaming/Code/User/settings.json
 // ~/Library/Application Support/Code/User/settings.json
 // ~/.config/Code/User/settings.json
-{
+{ "workbench.colorTheme": "Tokyo Night",  
   "remote.autoForwardPortsSource": "hybrid",
   "[yaml]": {
     "editor.autoIndent": "advanced"
