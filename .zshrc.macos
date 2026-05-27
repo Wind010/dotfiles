@@ -147,6 +147,7 @@ bindkey '^e' edit-command-line
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # CUSTOM
@@ -157,7 +158,17 @@ alias activate='source .venv/bin/activate'
 alias createvenv='python -m venv .venv'
 alias eza='ls' 
 
+# Secrets
+if [ -f "$HOME/.secrets" ]; then
+    source "$HOME/.secrets"
+fi
+
+# GO
 export PATH="$HOME/go/bin:$PATH"
+
+# Rancher Desktop
+export PATH="$HOME/.rd/bin:$PATH"
+
 
 # FD
 # brew install fd
@@ -205,3 +216,11 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/wind/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+
+
+

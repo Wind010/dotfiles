@@ -89,5 +89,22 @@
         "before": ["<C-a>"],
         "commands": ["editor.action.selectAll"]
     }
-  ],
+],
+"gitlens.ai.model": "vscode",
+"gitlens.ai.vscode.model": "copilot:gpt-4.1",
+"[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+},
+"editor.inlineSuggest.enabled": true,
+"github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+},
+"cSpell.userWords": [
+    "Kadane's",
+    "Supabase"
+],
+"chat.viewSessions.orientation": "stacked",
 }
