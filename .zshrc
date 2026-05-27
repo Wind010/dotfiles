@@ -163,10 +163,19 @@ alias activate='source .venv/bin/activate'
 alias createvenv='python -m venv .venv'
 alias ls='eza'
 
-export PATH="$HOME/go/bin:$PATH"
-eval $(keychain --eval github/id_ed25519)
+SUDO_EDITOR=nvim
 
-# FD
+export PATH="$HOME/go/bin:/home/wind/.cargo/bin:$PATH"
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    # Configuration for Linux
+    eval "$(ssh-agent -s)" > /dev/null
+    ssh-add ~/.ssh/github/id_ed25519
+else
+    # Configuration for macOS (and other OS types)
+    eval $(keychain --eval github/id_ed25519)
+fi
+
+
 # sudo apt install fd-find
 # sudo pacman -S fd
 export FZF_DEFAULT_COMMAND='fd --type f'
@@ -215,6 +224,7 @@ _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 
+eval "$(zoxide init zsh)"
 
 # Created by `pipx` on 2026-04-12 03:58:45
 export PATH="$PATH:/home/wind/.local/bin"

@@ -49,26 +49,26 @@ for i in "${!LINK_PATHS[@]}"; do
     TARGET_PATH="$GIT_REPO_FOR_DOTFILES/${TARGET_PATHS[$i]}"
     PARENT_DIR=$(dirname "$LINK_PATH")
 
-    # Ensure the parent directory exists
+    # Ensure parent directory exists
     if [ ! -d "$PARENT_DIR" ]; then
         echo "📂 Creating parent directory: $PARENT_DIR"
         mkdir -p "$PARENT_DIR"
     fi
 
+    # Remove existing directory/symlink before creating new symlink
     if [ -e "$LINK_PATH" ] || [ -L "$LINK_PATH" ]; then
-        echo "$LINK_PATH already exists... recreating symlink."
+        echo "🗑️  Removing existing $LINK_PATH"
+        rm -rf "$LINK_PATH"
     fi
 
-    echo "🔗 Creating symlink for $TARGET_PATH to $LINK_PATH"
-    ln -sf "$TARGET_PATH" "$LINK_PATH"
+    echo "🔗 Creating symlink: $LINK_PATH → $TARGET_PATH"
+    ln -s "$TARGET_PATH" "$LINK_PATH"
 done
 
 echo "✅ Successfully applied dotfiles!"
 
-
 echo "Refresh Oh-My-Zsh plugins"
 
-# Define plugin repositories and their target directories
 declare -a PLUGIN_NAMES=(
     "zsh-autosuggestions"
     "zsh-syntax-highlighting"

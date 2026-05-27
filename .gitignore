@@ -1,0 +1,27 @@
+# Ignore environment variables (sensitive data)
+.env
+
+# Ignore dependency folders
+node_modules/
+vendor/
+
+# Ignore build and distribution folders
+dist/
+build/
+bin/
+obj/
+
+# Ignore log files
+*.log
+
+# Ignore OS-specific system files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE/Editor settings
+.vscode/
+.idea/
+*.swp
+
+# Custom
+lazy-lock.json
