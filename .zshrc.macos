@@ -99,6 +99,12 @@ HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
 
+# Share history across sessions 
+setopt SHARE_HISTORY          # Share history between all sessions
+setopt APPEND_HISTORY         # Append to history file, don't overwrite
+setopt INC_APPEND_HISTORY     # Write to the history file immediately
+
+
 # Basic auto/tab complete:
 # https://thevaluable.dev/zsh-completion-guide-examples/
 autoload -U compinit
@@ -221,6 +227,5 @@ _fzf_compgen_dir() {
 export PATH="/Users/wind/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
-
 
 

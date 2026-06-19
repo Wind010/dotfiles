@@ -106,5 +106,6 @@
     "Kadane's",
     "Supabase"
 ],
+"claudeCode.preferredLocation": "panel",
 "chat.viewSessions.orientation": "stacked",
 }
