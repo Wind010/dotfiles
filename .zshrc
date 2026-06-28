@@ -166,14 +166,7 @@ alias ls='eza'
 SUDO_EDITOR=nvim
 
 export PATH="$HOME/go/bin:/home/wind/.cargo/bin:$PATH"
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    # Configuration for Linux
-    eval "$(ssh-agent -s)" > /dev/null
-    ssh-add ~/.ssh/github/id_ed25519
-else
-    # Configuration for macOS (and other OS types)
-    eval $(keychain --eval github/id_ed25519)
-fi
+eval $(keychain --eval github/id_ed25519)
 
 
 # sudo apt install fd-find
@@ -231,3 +224,15 @@ export PATH="$PATH:/home/wind/.local/bin"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# lean-ctx shell hook — begin
+if [ -f "/home/wind/.config/lean-ctx/shell-hook.zsh" ]; then
+. "/home/wind/.config/lean-ctx/shell-hook.zsh"
+fi
+# lean-ctx shell hook — end
+
+# >>> lean-ctx agent aliases >>>
+alias claude='LEAN_CTX_AGENT=1 BASH_ENV="$HOME/.bashenv" claude'
+alias codebuddy='LEAN_CTX_AGENT=1 BASH_ENV="$HOME/.bashenv" codebuddy'
+alias codex='LEAN_CTX_AGENT=1 BASH_ENV="$HOME/.bashenv" codex'
+alias gemini='LEAN_CTX_AGENT=1 BASH_ENV="$HOME/.bashenv" gemini'
+# <<< lean-ctx agent aliases <<<

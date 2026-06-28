@@ -108,4 +108,5 @@
 ],
 "claudeCode.preferredLocation": "panel",
 "chat.viewSessions.orientation": "stacked",
+"python.defaultInterpreterPath": "/home/wind/git/htb/DevHub/exploit/.venv",
 }
