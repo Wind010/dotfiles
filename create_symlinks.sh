@@ -55,33 +55,4 @@ for i in "${!LINK_PATHS[@]}"; do
     ln -s "$TARGET_PATH" "$LINK_PATH"
 done
 
-echo "✅ Successfully applied dotfiles!"
-
-echo "Refresh Oh-My-Zsh plugins"
-
-declare -a PLUGIN_NAMES=(
-    "zsh-autosuggestions"
-    "zsh-syntax-highlighting"
-)
-declare -a PLUGIN_URLS=(
-    "https://github.com/zsh-users/zsh-autosuggestions"
-    "https://github.com/zsh-users/zsh-syntax-highlighting"
-)
-
-ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
-
-for i in "${!PLUGIN_NAMES[@]}"; do
-    plugin="${PLUGIN_NAMES[$i]}"
-    repo_url="${PLUGIN_URLS[$i]}"
-    plugin_dir="$ZSH_CUSTOM/plugins/$plugin"
-
-    if [ -d "$plugin_dir" ]; then
-        echo "Updating $plugin..."
-        git -C "$plugin_dir" pull
-    else
-        echo "Cloning $plugin..."
-        git clone "$repo_url" "$plugin_dir"
-    fi
-done
-
-echo "✅ Successfully refreshed Oh-My-Zsh plugins!"
+echo "✅ Successfully applied dotfiles!
