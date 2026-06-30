@@ -9,6 +9,7 @@ LINK_PATHS=(
     "$HOME/.config/nvim"
     "$HOME/.zshrc"
     "$HOME/.config/tmux/tmux.conf"
+    "$HOME/.config/kitty/kitty.conf"
 )
 
 TARGET_PATHS=(
@@ -16,6 +17,7 @@ TARGET_PATHS=(
     "nvim"
     ".zshrc"
     "tmux.conf"
+    "Terminals/Kitty/kitty.conf"
 )
 
 case "$(uname)" in
