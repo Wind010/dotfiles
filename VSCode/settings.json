@@ -108,5 +108,10 @@
 ],
 "claudeCode.preferredLocation": "panel",
 "chat.viewSessions.orientation": "stacked",
-"python.defaultInterpreterPath": "/home/wind/git/htb/DevHub/exploit/.venv",
+"[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"chat.tools.terminal.autoApprove": {
+    "graphify": true
+},
 }
